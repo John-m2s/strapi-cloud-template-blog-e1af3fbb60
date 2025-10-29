@@ -1,0 +1,72 @@
+{
+  "kind": "collectionType",
+  "collectionName": "food_types",
+  "info": {
+    "singularName": "food-type",
+    "pluralName": "food-types",
+    "displayName": "Food Type"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "isDefault": {
+      "type": "boolean",
+      "default": false
+    },
+    "displayTitle": {
+      "type": "string"
+    },
+    "subTitle": {
+      "type": "string"
+    },
+    "heroImg": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "jpTypoImg": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "graphImg": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "dishes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::dish.dish",
+      "mappedBy": "food_type"
+    },
+    "extra": {
+      "type": "component",
+      "component": "shared.custom-food-type",
+      "repeatable": false
+    },
+    "order": {
+      "type": "integer"
+    }
+  }
+}
