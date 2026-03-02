@@ -4,7 +4,7 @@
   "info": {
     "singularName": "food-type",
     "pluralName": "food-types",
-    "displayName": "Food Type"
+    "displayName": "Menu Categories"
   },
   "options": {
     "draftAndPublish": true

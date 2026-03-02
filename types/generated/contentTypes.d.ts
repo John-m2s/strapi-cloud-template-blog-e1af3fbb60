@@ -461,7 +461,7 @@ export interface ApiDishNoteDishNote extends Struct.SingleTypeSchema {
 export interface ApiFoodTypeFoodType extends Struct.CollectionTypeSchema {
   collectionName: 'food_types';
   info: {
-    displayName: 'Food Type';
+    displayName: 'Menu Categories';
     pluralName: 'food-types';
     singularName: 'food-type';
   };
