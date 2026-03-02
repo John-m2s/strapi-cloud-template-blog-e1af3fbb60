@@ -26,6 +26,14 @@
     "displayTitle": {
       "type": "string"
     },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "files",
+        "images"
+      ]
+    },
     "heroImg": {
       "type": "media",
       "multiple": true,
@@ -35,35 +43,11 @@
         "files"
       ]
     },
-    "jpTypoImg": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files"
-      ]
-    },
-    "graphImg": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files"
-      ]
-    },
-    "dishes": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::dish.dish",
-      "mappedBy": "food_type"
-    },
-    "extra": {
-      "type": "component",
-      "component": "shared.custom-food-type",
-      "repeatable": false
-    },
     "order": {
       "type": "integer"
+    },
+    "shortDesc": {
+      "type": "richtext"
     },
     "htmlContent": {
       "type": "richtext"
