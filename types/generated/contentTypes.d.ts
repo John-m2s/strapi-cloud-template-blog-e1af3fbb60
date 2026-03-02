@@ -682,7 +682,7 @@ export interface ApiFoodTypeFoodType extends Struct.CollectionTypeSchema {
     displayTitle: Schema.Attribute.String;
     extra: Schema.Attribute.Component<'shared.custom-food-type', false>;
     graphImg: Schema.Attribute.Media<'images' | 'files'>;
-    heroImg: Schema.Attribute.Media<'images' | 'files'>;
+    heroImg: Schema.Attribute.Media<'images' | 'files', true>;
     htmlContent: Schema.Attribute.RichText;
     isDefault: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     jpTypoImg: Schema.Attribute.Media<'images' | 'files'>;
