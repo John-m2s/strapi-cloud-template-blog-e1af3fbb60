@@ -262,7 +262,7 @@ async function main() {
 
   app.log.level = 'error';
 
-  await seedExampleApp();
+  // await seedExampleApp();
   await app.destroy();
 
   process.exit(0);
@@ -270,5 +270,12 @@ async function main() {
 
 
 module.exports = async () => {
+  const disableSeed = process.env.DISABLE_BOOTSTRAP_SEED === 'true';
+
+  if (disableSeed) {
+    strapi.log.info('Bootstrap seed disabled');
+    return;
+  }
+
   await seedExampleApp();
 };
