@@ -431,6 +431,71 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiCateCate extends Struct.CollectionTypeSchema {
+  collectionName: 'cates';
+  info: {
+    displayName: 'CMS Categories';
+    pluralName: 'cates';
+    singularName: 'cate';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    cms_articles: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::cms-article.cms-article'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    desc: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::cate.cate'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiCmsArticleCmsArticle extends Struct.CollectionTypeSchema {
+  collectionName: 'cms_articles';
+  info: {
+    displayName: 'CMS Article';
+    pluralName: 'cms-articles';
+    singularName: 'cms-article';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    cms_category: Schema.Attribute.Relation<'manyToOne', 'api::cate.cate'>;
+    content: Schema.Attribute.RichText;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::cms-article.cms-article'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    source: Schema.Attribute.String;
+    sourceUrl: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiContactSectionContactSection
   extends Struct.SingleTypeSchema {
   collectionName: 'contact_sections';
@@ -1253,6 +1318,8 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::about-lazy-content.about-lazy-content': ApiAboutLazyContentAboutLazyContent;
       'api::about.about': ApiAboutAbout;
+      'api::cate.cate': ApiCateCate;
+      'api::cms-article.cms-article': ApiCmsArticleCmsArticle;
       'api::contact-section.contact-section': ApiContactSectionContactSection;
       'api::dish-note.dish-note': ApiDishNoteDishNote;
       'api::food-type.food-type': ApiFoodTypeFoodType;
